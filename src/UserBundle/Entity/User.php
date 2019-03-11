@@ -1,5 +1,9 @@
-<?php 
-
+<?php
+/**
+ * To Handle User Table
+ * @author Ashutosh Rai <a.kumar@medlamg.com>
+ * @createdAt 11/03/19 12:33
+ */
 namespace UserBundle\Entity;
 
 use Doctrine\ORM\MApping as ORM;
