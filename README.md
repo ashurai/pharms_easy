@@ -3,9 +3,11 @@
 
 after making clone please create a database with name pharm_easy 
 
-and after that please install composer by 
+and after that `cd pharms_easy` and please install composer by 
 
 `composer install`
+
+if a linux system then please make sure that `var/cache/ var/logs/ var/sessions` have read and write access
 
 at the of installation compodser it will ask for few local system configuration
 after configuration please execute this two below command 
