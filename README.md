@@ -1,3 +1,17 @@
+# Install & Run on local machine by follwing steps
+`git clone https://github.com/ashurai/pharms_easy.git`
+after making clone please create a database with name pharm_easy 
+and after that please install composer by 
+`composer install`
+at the of installation compodser it will ask for few local system configuration
+after configuration please execute this two below command 
+`php bin/console doctrine:schema:update --force`
+and after that run your local server
+`php bin/console server:run`
+later you can pate this url in brower and you can see the loaded page
+`http://127.0.0.1:8000/`
+
+
 Symfony Standard Edition
 ========================
 
