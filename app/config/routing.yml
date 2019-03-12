@@ -8,3 +8,7 @@ app:
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+profile_personal:
+    path: /user/profile
+    defaults: { _controller: UserBundle:Profile:index}

@@ -35,21 +35,25 @@ class User extends BaseUser
     protected $id;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="first_name", type="string", length=255, nullable=true)
+     */
+    protected $firstName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="last_name", type="string", length=255, nullable=true)
+     */
+    protected $lastName;
+
+    /**
      * @var String
      *
      * @ORM\Column(name="profile_type", type="string", length=15, nullable=false)
      */
     protected $profileType;
-
-    /**
-     * @var \UserBundle\Entity\Profile
-     *
-     * @ORM\OneToOne(targetEntity="\UserBundle\Entity\Profile")
-     * @ORM\JoinColumns({
-     *  @ORM\JoinColumn(name="profile_id", referencedColumnName="id")
-     * })
-     */
-    protected $profile;
 
     /**
      * User constructor.
@@ -85,26 +89,50 @@ class User extends BaseUser
     }
 
     /**
-     * Set profile
+     * Set firstName
      *
-     * @param \UserBundle\Entity\Profile $profile
+     * @param string $firstName
      *
      * @return User
      */
-    public function setProfile(\UserBundle\Entity\Profile $profile = null)
+    public function setFirstName($firstName)
     {
-        $this->profile = $profile;
+        $this->firstName = $firstName;
 
         return $this;
     }
 
     /**
-     * Get profile
+     * Get firstName
      *
-     * @return \UserBundle\Entity\Profile
+     * @return string
      */
-    public function getProfile()
+    public function getFirstName()
     {
-        return $this->profile;
+        return $this->firstName;
+    }
+
+    /**
+     * Set lastName
+     *
+     * @param string $lastName
+     *
+     * @return User
+     */
+    public function setLastName($lastName)
+    {
+        $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    /**
+     * Get lastName
+     *
+     * @return string
+     */
+    public function getLastName()
+    {
+        return $this->lastName;
     }
 }

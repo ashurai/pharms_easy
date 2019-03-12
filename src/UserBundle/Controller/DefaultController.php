@@ -26,6 +26,13 @@ class DefaultController extends Controller
     public function newAction(Request $request){
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
+        echo "hi";exit;
+        if ($request->getMethod() == "POST"){
+            if($form->isValid()){
+                print_r($form->getData());exit;
+            }
+        }
+
         return $this->render("UserBundle:Default:new.html.twig", [
             'form' => $form->createView()
         ]);

@@ -25,12 +25,6 @@
       */
      protected $id;
 
-     /**
-      * @var String
-      * @ORM\Column(name="first_name", type="string", nullable=false, length=30)
-      */
-     protected $name;
-
      #######################################################################################
      # patient info
      #######################################################################################
@@ -105,8 +99,6 @@
       * @ORM\Column(name="updated_at", type="datetime", nullable=true)
       */
      private $updatedAt;
-     
-
  
     /**
      * Get id

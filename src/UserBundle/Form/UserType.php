@@ -35,16 +35,19 @@ class UserType extends AbstractType
         $profileType = ProfileTypeEnum::getAllValues();
 
         $builder
+            ->add('firstName')
+            ->add('lastName')
             ->add('email',Type\EmailType::class,[
                 'required' => true,
             ])
-            ->add('password', null, [
-                'required'      => true,
-                'property_path' => 'plainPassword',
-            ])
-            ->add('profile', Type\ChoiceType::class, [
+            ->add('profileType', Type\ChoiceType::class, [
                 'required' => true,
-                'choices'  => $profileType,
+                'choices'  => [
+                    'DOCTOR' => 0,
+                    'PHARMACIST' => 1,
+                    'PATIENT' => 2
+                ],
+                'expanded' => true,
             ]);
         ;
     }

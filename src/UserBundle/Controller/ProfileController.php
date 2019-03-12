@@ -9,10 +9,17 @@ namespace UserBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * Class ProfileController
+ * @package UserBundle\Controller
+ */
 class ProfileController extends Controller
 {
     public function indexAction(Request $request){
 
+        return $this->render('UserBundle:Profile:index.html.twig', [
+
+        ]);
     }
 
     public function postAction(Request $request){

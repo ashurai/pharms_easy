@@ -5,8 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="">
-        <link rel="icon" href="../../../../favicon.ico">
-
+        <link rel="icon" href="{{ asset('assets/images/images.svg') }}">
         <title>Signin Template for Bootstrap</title>
 
         <!-- Bootstrap core CSS -->
@@ -17,9 +16,30 @@
         <link href="{{ asset('assets/css/signin.css') }}" rel="stylesheet">
     </head>
 
+    {#<div>#}
+        {#{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}#}
+            {#{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |#}
+            {#<a href="{{ path('fos_user_security_logout') }}">#}
+                {#{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}#}
+            {#</a>#}
+        {#{% else %}#}
+            {#<a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>#}
+        {#{% endif %}#}
+    {#</div>#}
+    {#{% if app.request.hasPreviousSession %}#}
+        {#{% for type, messages in app.session.flashBag.all %}#}
+            {#{% for message in messages %}#}
+                {#<div class="{{ type }}">#}
+                    {#{{ message|trans({}, 'FOSUserBundle') }}#}
+                {#</div>#}
+            {#{% endfor %}#}
+        {#{% endfor %}#}
+    {#{% endif %}#}
     <body class="text-center">
-    {% block body %}{% endblock %}
-    {% block fos_user_content %}
-    {% endblock fos_user_content %}
+
+        {% block body %}{% endblock %}
+
+        {% block fos_user_content %}
+        {% endblock fos_user_content %}
     </body>
 </html>
