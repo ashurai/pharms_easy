@@ -1,1 +1,29 @@
-Hello World!
+{% extends 'UserBundle::layout.html.twig' %}
+{% block body %}
+    {% if users is empty %}
+        <p>No record Found!!</p>
+    {% else %}
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for user in users %}
+            <tr>
+                <th scope="row">{{ user.id }}</th>
+                <td>{{ user.firstName }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.profileType }}</td>
+                <td><a href="{{ path('profile_personal', {'userId':user.id}) }}">View</a></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}

@@ -1,24 +1,23 @@
 <?php
 /**
- * To deal with user register
+ * To Handle Medical records related users / patient
  * @author Ashutosh Rai <a.kumar@medlamg.com>
- * @createdAt 11/03/19 12:33
+ * @createdAt 12/03/19 18:06
  */
 namespace UserBundle\Form;
 
-use Userbundle\Entity\User;
-
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\Extension\Core\Type;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use UserBundle\Entity\Profile;
+
 
 /**
- * Class UserType
+ * Class MedicalRecordsType
  * @package UserBundle\Form
  */
-class UserType extends AbstractType
+class MedicalRecordsType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -27,32 +26,23 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('firstName')
-            ->add('lastName')
-            ->add('email',Type\EmailType::class,[
-                'required' => true,
-            ])
-            ->add('profileType', Type\ChoiceType::class, [
+            ->add('weight')
+            ->add('height')
+            ->add('bloodType')
+            ->add('pathologies')
+            ->add('drugs')
+            ->add('allergies')
+
+            ->add('isSharingInformation', Type\ChoiceType::class, [
                 'required' => true,
                 'choices'  => [
-                    'DOCTOR' => 'DOCTOR',
-                    'PHARMACIST' => 'PHARMACIST',
-                    'PATIENT' => 'PATIENT'
+                    'Yes' => true,
+                    'No' => false
                 ],
                 'expanded' => true,
             ]);
         ;
     }
-
-    /**
-     * Get parent default fosuserbundle user form type
-     * @return string
-     */
-    public function getParent()
-    {
-        return 'FOS\UserBundle\Form\Type\RegistrationFormType';
-    }
-
 
     /**
      * @param OptionsResolver $resolver
@@ -61,7 +51,7 @@ class UserType extends AbstractType
     {
         //parent::configureOptions($resolver);
         $resolver->setDefaults(array(
-            'data_class' => User::class,
+            'data_class' => Profile::class,
             'validation_groups' => array('Default','Create'),
             'csrf_protection'    => false,
             'allow_extra_fields' => true,

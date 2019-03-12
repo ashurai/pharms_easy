@@ -18,15 +18,27 @@ use UserBundle\Entity\User;
  */
 class DefaultController extends Controller
 {
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function indexAction()
     {
-        return $this->render('UserBundle:Default:index.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $userList = $em->getRepository('UserBundle:User')->findAll();
+
+        return $this->render('UserBundle:Default:index.html.twig', [
+            'users' => $userList
+        ]);
     }
 
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function newAction(Request $request){
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
-        echo "hi";exit;
+
         if ($request->getMethod() == "POST"){
             if($form->isValid()){
                 print_r($form->getData());exit;

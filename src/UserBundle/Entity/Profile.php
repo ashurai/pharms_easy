@@ -99,6 +99,16 @@
       * @ORM\Column(name="updated_at", type="datetime", nullable=true)
       */
      private $updatedAt;
+
+     /**
+      * @var \UserBundle\Entity\User
+      *
+      * @ORM\OneToOne(targetEntity="UserBundle\Entity\User")
+      * @ORM\JoinColumns({
+      *     @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+      * })
+      */
+     private $user;
  
     /**
      * Get id
@@ -372,5 +382,29 @@
     public function getUpdatedAt()
     {
         return $this->updatedAt;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \UserBundle\Entity\User $user
+     *
+     * @return Profile
+     */
+    public function setUser(\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \UserBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }
