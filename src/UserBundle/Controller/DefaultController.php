@@ -25,9 +25,11 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $userList = $em->getRepository('UserBundle:User')->findAll();
-
+        $user = $this->getUser();
+        $userId = $user->getId();
         return $this->render('UserBundle:Default:index.html.twig', [
-            'users' => $userList
+            'users' => $userList,
+            'userId' => $userId,
         ]);
     }
 
