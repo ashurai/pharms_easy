@@ -18,7 +18,7 @@ and after that run your local server
 
 `php bin/console server:run`
 
-later you can pate this url in brower and you can see the loaded page
+later you can paste this url in brower and you can see the loaded pages
 
 `http://127.0.0.1:8000/`
 
